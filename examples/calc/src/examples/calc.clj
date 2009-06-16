@@ -1,5 +1,7 @@
 (ns examples.calc
   (:use clj-android)
+  (:use clojure.main)
+  (:use clojure.contrib.server-socket)
   (:import (android.widget ArrayAdapter)))
 
 (defmacro get-text []
@@ -44,7 +46,10 @@
 (defn swap [a b] (list b a))
 
 (defactivity Main
-  (:create (let [list-view (view [ListView {}])
+  (:create 
+   (create-repl-server 8032)
+   (repl)
+   (let [list-view (view [ListView {}])
                  edit-view (view [EditText {}])]
              (set-list @calc-stack)
              (on-key edit-view

@@ -73,7 +73,7 @@
       </javac>
 
       <java classname="clojure.lang.Compile"
-            classpath="${clojure-jar}:${android-jar}:${clj-android-jar}:${out-classes}:${source-folder}"
+            classpath="${clojure-jar}:${android-jar}:${clj-android-jar}:${out-classes}:${source-folder}:${out-classes}"
             failonerror="true">
         <sysproperty key="clojure.compile.path" value="${out-classes}"/>
         <arg value="examples.calc"/>
